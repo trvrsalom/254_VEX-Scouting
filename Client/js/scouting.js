@@ -128,7 +128,7 @@ function update(){
 
 function stringify() {
     stuff();
-    return pad(teamNum.toUpperCase(), 5) + 
+    return pad(teamNum.toUpperCase().replace(/\s/g, ''), 5) + 
     pad(matchNum, 3) +  
     pad(floorTiles, 2) +  
     pad(cubeScore,2) +  
