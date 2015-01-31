@@ -3,18 +3,23 @@ This is a scouting web app built for the VEX Robotics Competition. It is made to
 
 ###TODO
 #####Serverside:
--~QR codes~
--~Format QR code data~
--Save to JSON periodically
--Div to display extra data instead of alert
--Play sound when scanned
+- [X] QR codes
+- [X] Format QR code data
+- [ ] Save to JSON periodically
+- [ ] Div to display extra data instead of alert
+- [ ] Play sound when scanned
+- [ ] Table Sorting
 #####Client:
--Better Modal for saving data
+- [ ] Better Modal for saving data
 #####Other:
--github.io page?
--__Code Cleanup__
+- [ ] github.io page?
+- [ ] __Code Cleanup__
 
 ###Example Data Structure
 ```”
 {“00000":"000!00!00!0!0!0!0!0!0!00","0243g":"000!01!01!1!1!0!0!0!0!15","0254g":"000!02!02!2!1!8!3!7!8!01","0254q":"000!01!02!2!1!0!0!0!0!04","teams":"0243g,00000,0254g,0254q"}"
 ```
+
+***
+Made by Team 254
+
