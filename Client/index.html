@@ -1,0 +1,349 @@
+<html manifest="https://preview.c9.io/nukemm/vexscout/Client/cache.appcache">
+    <head>
+        <meta name="viewport" content="user-scalable=no"/>
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <title>Scouting</title>
+        <script src="js/jquery-1.11.1.min.js" type="text/javascript"></script>
+        <link rel="apple-touch-icon" href="/images/apple-touch-icon.png" />
+        <link rel="stylesheet" href="css/semantic/css/semantic.min.css"/>
+        <link rel="stylesheet" href="css/semantic/javascript/semantic.min.js"/>
+        <link rel="stylesheet" href="css/stuff2.css"/>
+        <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
+        <script src="css/semantic/javascript/semantic.min.js" type="text/javascript"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+	    <script type="text/javascript" src="../Client/js/jquery.qrcode.js"></script>
+	    <script type="text/javascript" src="../Client/js/jquery.qrcode.min.js"></script>
+		<script type="text/javascript" src="../Client/js/qrcode.js"></script>
+		<script src="js/scouting.js" type="text/javascript"></script>
+		<script src="js/fastclick.js" type="text/javascript"></script>
+        <style>
+            @font-face { font-family: Droid; src: url('fonts/font.woff'); } 
+            body{
+                margin:0px;
+                font-family: Droid;
+                overflow: hidden;
+            }
+            .head{
+                height:50px;
+                background:#0070FF;
+            }
+            .head img{
+                height:40px;
+                margin-top:5px;
+                margin-left:5px;
+            }
+            .mainContainer{
+                display: block;
+            }
+            .mainContainer .top{
+                height:50px;
+                margin:10px;
+                border-bottom: 1px solid #ddd;
+            }
+            .mainContainer .left{
+                width:45%;
+                border-right: 1px solid #ddd;
+                padding-left:10px;
+                float:left;
+            }
+            .mainContainer .right{
+                width:45%;
+                padding-right:10px;
+                float:right;
+            }
+            input.text{
+                font-family: Droid;
+                border-radius:2px;
+                border:1px solid #DDD;
+                padding-left:20px;
+                height:40px;
+                display:inline-block;
+                margin:0 auto;
+                font-size:24px;
+            }
+            .mainContainer .top input{
+                height:40px;
+                display:inline-block;
+                margin:0 auto;
+                
+            }
+            .mainContainer .top input:nth-child(2){
+                margin-left:5px;
+            }
+            .select-contain select{
+                background: transparent;
+                width: 150px;
+                padding: 5px;
+                font-size: 16px;
+                height: 34px;
+                -webkit-appearance: none;
+                color:#FFF;
+                border-radius:2px;
+                border:1px solid #0070FF;
+            }
+            .select-contain{
+                background:#0070FF;
+                display:inline;
+                padding-top:10px;
+                padding-bottom:10px;
+                border-radius:2px;
+            }
+            .select-contain span{
+                color:#FFF;
+                padding-right:10px;
+            }
+            .category{
+                border:1px solid #DDD;
+                border-radius:2px;
+                margin:10px;
+                padding:10px;
+                margin-top:0px;
+                margin-left:0px;
+                height:65px;
+            }
+            .category .description{
+                display: inline;
+                font-size:200%;
+            }
+            .category .control{
+                display: inline;
+                float:right;
+            }
+            .category .input{
+                float:right;
+                width:215px;
+            }
+            .check {
+                display: inline-block;
+                width: 20px;
+                height: 20px;
+                vertical-align: center;
+            }
+            p {
+                font-size: 20px;
+            }
+            input[type=range]{
+                -webkit-appearance: none;
+            }
+            
+            input[type=range]::-webkit-slider-thumb {
+                -webkit-appearance: none;
+                border: none;
+                height: 18px;
+                width: 18px;
+                border-radius: 50%;
+            
+                margin-top: 0px;
+            }
+            .qrCodes {
+                text-align: center;
+                display: none;
+            }
+            .dispCode {
+                background-color: #fff;
+                padding: 5px;
+                border-radius: 5px;
+                margin : 25px;
+                margin-left: 90px;
+                margin-right: 90px;
+                float: left;
+                vertical-align: center;
+                display: table-cell;
+                color: #000;
+                font-family: Droid;
+            }
+            .dispCode:nth-child(even) {
+                float: right;
+            }
+            #cacheStatus {
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                opacity: 100%;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="head">
+            <img src="images/logo.png" />
+            
+        </div>
+        <div class="mainContainer">
+            <div class="leftRightContainer">
+                <div class="top">
+                    <center>
+                        <input id="teamNum" class="teamNum text" type="text" placeholder="Team #"/>
+                        <input id="matchNum" class="matchNum text" type="text" placeholder="Match #"/>
+                        <button class="ui positive button" onclick="saveData(); reset();">Submit</button>
+                        <button class="ui positive button" onclick="genCode();">Generate</button>
+                    </center>
+                </div>
+                <div class="left">
+                    <!--
+                    <div class="select-contain">
+                        <select>
+                            <option>asd</option>
+                            <option>asdasdasd</option>
+                            <option>asdasdasdasdasdasd</option>
+                        </select>
+                        <span>&#9660;</span>
+                    </div>
+                    -->
+                    <div class="category">
+                        <input class="check" type="checkbox" id="floorTry">
+                        <div class="description">
+                            Floor Tiles
+                        </div>
+                        <div class="control">
+                            <div class="ui buttons">
+                              <div class="ui green button" onclick="plusFloorTiles()">+</div>
+                              <div style="width: 57px;" class="ui button disabled" id="floorTiles">SCORE</div>
+                              <div class="ui red button" onclick="minusFloorTiles()">-</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="category">
+                        <input class="check" type="checkbox" id="cubeTry">
+                        <div class="description">
+                            Cubes
+                        </div>
+                        <div class="control">
+                            <div class="ui buttons">
+                              <div class="ui green button" onclick="plusCubeScore()">+</div>
+                              <div style="width: 57px;" class="ui button disabled" id="cubeScore">SCORE</div>
+                              <div class="ui red button" onclick="minusCubeScore()">-</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="category">
+                        <input class="check" type="checkbox" id="cubeSkyriseTry">
+                        <div class="description">
+                            Skyrise Cubes
+                        </div>
+                        <div class="control">
+                            <div class="ui buttons">
+                              <div class="ui green button" onclick="plusCubeSkyriseScore()">+</div>
+                              <div style="width: 57px;" class="ui button disabled" id="cubeSkyriseScore">SCORE</div>
+                              <div class="ui red button" onclick="minusCubeSkyriseScore()">-</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="category">
+                        <input class="check" type="checkbox" id="skyriseTry">
+                        <div class="description">
+                            Skyrise
+                        </div>
+                        <div class="control">
+                            <div class="ui buttons">
+                              <div class="ui green button" onclick="plusSkyriseScore()">+</div>
+                              <div style="width: 57px; text-align: center;" class="ui button disabled" id="skyriseScore">SCORE</div>
+                              <div class="ui red button" onclick="minusSkyriseScore()">-</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="category">
+                        <input class="check" type="checkbox" id="autoTry" onchange="autonTry()">
+                        <div class="description">
+                            Auton
+                        </div>
+                        <div class="control">
+                            <div style="width: 170px;" id="scoredAuton" onclick="saveAutoScore(); resetAuto();" class="ui green button">Save</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="right">
+                        <div class="left">
+                            
+                            <p>Arm Speed</p>
+                            <input class="check" id="armOrNotReset" type="checkbox" onchange="armOrNot(this.value)">
+                            <input style="border-radius: 30px;" id="armReset" type="range" value="0" onchange="armSpeed(this.value)"/>
+                            
+                            <p>Drive Speed</p>
+                            <input class="check" type="checkbox" onchange="driveOrNot()">
+                            <input style="border-radius: 30px;" type="range" value="0" onchange="driveSpeed(this.value)"/>
+                        </div>
+                        <div class="right">
+                            <p>Cube Intake</p>
+                            <input class="check" type="checkbox" onchange="cubeOrNot()">
+                            <input style="border-radius: 30px;" type="range" value="0" onchange="cubeIntake(this.value)"/>
+                            
+                            <p>Skyrise Intake</p>
+                            <input class="check" type="checkbox" onchange="skyriseOrNot()">
+                            <input style="border-radius: 30px;" type="range" value="0" onchange="skyriseIntake(this.value)"/>
+                            
+                        </div>
+                </div>
+            </div>
+        </div>
+        <div class="chacheStatus" id = "cacheStatus">
+            <div class="ui segment">
+              <div class="ui active dimmer">
+                <div class="ui large text loader" id="cacheInfo">Loading</div>
+              </div>
+              <p></p>
+              <p></p>
+              <p></p>
+            </div>
+        </div>
+        <div class="qrCodes">
+            <br />
+            <div class="ui buttons">
+              <div class="ui negative button" onclick="hideDIVs('.qrCodes', '.mainContainer'); clearQR(); clearCodes();">Clear Codes</div>
+              <div class="or"></div>
+              <div class="ui positive button" onclick="hideDIVs('.qrCodes', '.mainContainer'); clearQR();" >Scout More</div>
+            </div>
+	        <div id="codes">
+	        	
+	        </div>
+        </div>
+        <script>
+            update();
+        </script>
+        <script>
+            $(function() {
+                FastClick.attach(document.body);
+            });
+            $('.ui.checkbox')
+              .checkbox()
+            ;
+            function postToPHP(data)
+            {
+               $.ajax({
+                  type: "POST",
+                  url: "input.php",
+                  data: data,
+                  success: function() {
+                   alert("done")
+                  }
+                }); 
+            }
+        </script>
+        <script type="text/javascript">
+            //initLS();
+            var cacheStatus  = document.getElementById('cacheInfo');
+            var cacheBar = document.getElementById('cacheStatus');
+        
+        
+            if (navigator.onLine) {
+                window.applicationCache.addEventListener('updateready', function(e) {
+                    if (window.applicationCache.status == window.applicationCache.UPDATEREADY) {
+                        window.applicationCache.swapCache();
+                        cacheStatus.innerHTML="update ready!";
+                        if (confirm('A new version of this page is available. Reload?')) {
+                            window.location.reload();
+                        }
+                    }
+                }, false);
+                window.applicationCache.addEventListener('cached', function(e) {cacheStatus.innerHTML="Done!"; cacheBar.style.display = "none"; alert("Page has been saved, thanks!");},false);
+                window.applicationCache.addEventListener('noupdate', function(e) { cacheStatus.innerHTML="Up to date!"; cacheBar.style.display = "none"; },false);
+                window.applicationCache.addEventListener('downloading', function(e) { cacheStatus.innerHTML="Updating..."; cacheBar.style.display = "none"; },false);
+                window.applicationCache.addEventListener('error', function(e) { cacheStatus.innerHTML="You broke it..."; },false);
+                window.applicationCache.update();
+            } else {
+                cacheStatus.innerHTML="Can't connect to server.";
+                cacheStatus.style.display = "none";
+            }
+        </script>  
+    </body>
+</html>

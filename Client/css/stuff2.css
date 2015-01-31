@@ -1,0 +1,65 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,600,700);
+@keyframes checked {
+  0% { tranform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+* {
+  box-sizing: border-box;
+}
+form{
+  width:260px;
+  height:260px;
+  margin-left:50%;
+}
+
+input[type="range"]{
+  -webkit-appearance:none;
+  float:none;
+  margin-left:30%;
+  margin-right:30%;
+  height:20px;
+/*margin:10px 50px;*/
+
+  background: #3498db;
+  background-size:150px 10px;
+  background-position:center;
+  background-repeat:no-repeat;
+  overflow:hidden;
+}
+
+input[type="range"]:first-of-type{
+  margin-top:30px;
+}
+
+input[type="range"]::-webkit-slider-thumb{
+  -webkit-appearance:none;
+  width:20px;
+  height:20px;
+  background:#0D47A1;
+  position:relative;
+  z-index:3;
+  box-shadow:0 0 5px 0 rgba(0,0,0,0.3);
+}
+
+input[type="range"]::-webkit-slider-thumb:after{
+  content:" ";
+  width:160px;
+  height:10px;
+  position:relative;
+  z-index:1;
+  right:20px;
+  top:5px;
+  background: #0070FF;
+  background: linear-gradient(to right, #0070FF 1%, #2980b9 70%);
+}
+
+p{
+  width:100%;
+  text-align:center;
+  color:#7f8c8d;
+  font-family: 'HelveticaNeue-UltraLight', 'Helvetica Neue UltraLight', Roboto, Arial, Sans-serif;
+  font-size:32px;
+  margin-top:30px;
+}

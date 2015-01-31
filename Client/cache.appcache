@@ -1,0 +1,17 @@
+CACHE MANIFEST
+CACHE:
+../Client/index.html
+../Client/fonts/font.woff
+../Client/images/logo.png
+../Client/js/jquery-1.11.1.min.js
+../Client/css/semantic/css/semantic.min.css
+../Client/css/semantic/javascript/semantic.min.js
+../Client/css/stuff2.css
+//ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js
+../Client/css/semantic/javascript/semantic.min.js
+https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js
+../Client/js/jquery.qrcode.js
+../Client/js/jquery.qrcode.min.js
+../Client/js/qrcode.js
+../Client/js/scouting.js
+../Client/js/fastclick.js
