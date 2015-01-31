@@ -9,8 +9,10 @@ This is a scouting web app built for the VEX Robotics Competition. It is made to
 - [ ] Div to display extra data instead of alert
 - [ ] Play sound when scanned
 - [ ] Table Sorting
+
 #####Client:
 - [ ] Better Modal for saving data
+
 #####Other:
 - [ ] github.io page?
 - [ ] __Code Cleanup__
